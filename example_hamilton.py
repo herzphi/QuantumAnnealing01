@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.linalg import expm
+import matplotlib.pyplot as plt
 
 
 # Define Hamiltonians
@@ -33,7 +34,7 @@ def H_total(t, T):
 
 
 # Parameters
-T = 1.0  # Total annealing time
+T = 10.0  # Total annealing time
 num_steps = 1000
 dt = T / num_steps
 
@@ -41,11 +42,26 @@ dt = T / num_steps
 state = np.array([1, 1]) / np.sqrt(2)
 
 # Time evolution
+ts, states = ([] for i in range(2))
 for step in range(num_steps):
     t = step * dt
     H_t = H_total(t, T)
     U_t = time_evolution_operator(H_t, dt)
-    state = U_t @ state
+    state = U_t @ state  # Matrix multiplication
+    ts.append(t)
+    states.append(state)
 
-# Final state
-print("Final state:", state)
+states_real_0 = [np.real(el)[0] for el in states]
+states_real_1 = [np.real(el)[1] for el in states]
+states_imag_0 = [np.imag(el)[0] for el in states]
+states_imag_1 = [np.imag(el)[1] for el in states]
+
+fig, axs = plt.subplots(1, figsize=(5, 5))
+
+axs.plot(ts, states_real_0, "b-", label="0 Real")
+axs.plot(ts, states_real_1, "r-", label="1 Real")
+axs.plot(ts, states_imag_0, "b--", label="0 Imag")
+axs.plot(ts, states_imag_1, "r--", label="1 Imag")
+
+plt.legend()
+plt.show()
