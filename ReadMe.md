@@ -34,7 +34,8 @@ $$H_P = V(x)$$
 2. Time-dependent Hamiltonian
 The Hamiltonian consists of two parts:
 
-​$$H(t)=[1-s(t)]H_D +s(t)H_P$$
+​$$H(t)=(1-s(t))H_D +s(t)H_P$$
+
 where $s(t)$ is a schedule function that changes from $0$ to $1$ over time.
 
 3. Solve the TDSE
