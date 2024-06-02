@@ -43,4 +43,5 @@ We'll use the Crank-Nicolson method to solve the TDSE numerically.
 # Result
 
 The double-well-potential given by $V(x)$ can be seen in orange. the minima can easily calculated to be $x_1=\pm \sqrt{5}$. The probability density $\mid \psi \mid^2$ of the time dependent wave function $\psi(t, x)$ after $1000$ iterations becomes the blue line with the maxima at the minima of the potential. In this case the probability density approaches the ground states of the wave function given the potential $V(x)$.
+
 ![Missing plot](./plots/onedim.png)
